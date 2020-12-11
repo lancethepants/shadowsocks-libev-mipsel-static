@@ -1,0 +1,15 @@
+diff -Naur libev-4.33.orig/ev_epoll.c libev-4.33/ev_epoll.c
+--- libev-4.33.orig/ev_epoll.c	2020-12-11 09:23:19.195529237 -0700
++++ libev-4.33/ev_epoll.c	2020-12-11 09:25:16.392526462 -0700
+@@ -244,11 +244,6 @@
+ {
+   int fd;
+ 
+-#if defined EPOLL_CLOEXEC && !defined __ANDROID__
+-  fd = epoll_create1 (EPOLL_CLOEXEC);
+-
+-  if (fd < 0 && (errno == EINVAL || errno == ENOSYS))
+-#endif
+     {
+       fd = epoll_create (256);
+ 
